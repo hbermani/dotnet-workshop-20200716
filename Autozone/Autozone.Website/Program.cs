@@ -25,8 +25,6 @@ namespace Autozone.Website {
 						options.ListenAnyIP(5000, o => o.Protocols = HttpProtocols.Http1AndHttp2);
 						options.UseSslIfFileExists(5001, @"D:\Dropbox\ursatile.pfx");
 					});
-
-
 					webBuilder.UseStartup<Startup>();
 				});
 	}
