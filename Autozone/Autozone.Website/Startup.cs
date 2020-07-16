@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Autozone.Website.Controllers;
 using Autozone.Website.Data;
+using Autozone.Website.Hubs;
 using EasyNetQ;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -26,11 +27,11 @@ namespace Autozone.Website {
 		// This method gets called by the runtime. Use this method to add services to the container.
 		public void ConfigureServices(IServiceCollection services) {
 			var bus = RabbitHutch.CreateBus(AMQP);
-
 			services.AddSingleton<IBus>(bus);
-
 			services.AddSingleton<CarDatabase>();
 			services.AddControllersWithViews();
+
+			services.AddSignalR();
 
 		}
 
@@ -54,6 +55,8 @@ namespace Autozone.Website {
 				endpoints.MapControllerRoute(
 					name: "default",
 					pattern: "{controller=Home}/{action=Index}/{id?}");
+
+				endpoints.MapHub<NewCarHub>("/newcarhub");
 			});
 		}
 	}

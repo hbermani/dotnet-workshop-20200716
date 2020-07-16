@@ -3,11 +3,18 @@
     ViewData["Title"] = "Home Page";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Cars</h1>
-    <ul>
-        @foreach (var car in Model) {
+    <div class="text-center">
+        <h1 class="display-4">LATEST CARS!</h1>        
+        <ul id="latest-cars-list">
+
+        </ul>
+        <h1 class="display-4">All Cars</h1>
+        <ul>
+            @foreach (var car in Model) {
             <li>@car.Registration @car.Model.Make @car.Model.Name (@car.Colour / @car.Year)</li>
         }
-    </ul>
-</div>
+        </ul>
+    </div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/microsoft-signalr/3.1.3/signalr.min.js"></script>
+<script src="~/js/newcarhub.js"></script>
+

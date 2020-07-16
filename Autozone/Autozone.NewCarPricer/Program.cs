@@ -1,8 +1,10 @@
 ﻿using System;
+using System.Threading.Tasks;
 using Autozone.Messages;
 using Autozone.PricingService;
 using EasyNetQ;
 using Grpc.Net.Client;
+using Microsoft.AspNetCore.SignalR.Client;
 
 namespace Autozone.NewCarPricer {
 	class Program {
@@ -12,10 +14,19 @@ namespace Autozone.NewCarPricer {
 		private static IBus bus = RabbitHutch.CreateBus(AMQP);
 		private static Pricer.PricerClient pricerClient;
 
-		static void Main(string[] args) {
+		private const string SIGNALR_URL = "https://workshop.ursatile.com:5001/newcarhub";
+
+		private static readonly HubConnection hub = new HubConnectionBuilder()
+			.WithUrl(SIGNALR_URL)
+			.Build();
+
+		static async Task Main(string[] args) {
 			var grpc = GrpcChannel.ForAddress("https://workshop.ursatile.com:5003");
 			pricerClient = new Pricer.PricerClient(grpc);
 			Console.Write("Subscribing to messages!");
+
+			await hub.StartAsync();
+
 			bus.Subscribe<NewCarListingMessage>($"newcarpricer", HandleNewCarListing);
 		}
 
@@ -28,7 +39,10 @@ namespace Autozone.NewCarPricer {
 				Year = message.Year
 			};
 			var response = pricerClient.CalculatePrice(pricerRequest);
-			Console.WriteLine($"Car costs {response.Price} {response.Currency}");
+			var thing =
+				$"Car {message.Make} {message.Model} ({message.Colour}, {message.Year}) costs {response.Price} {response.Currency}";
+			hub.SendAsync("SendMessage", "autozone", thing);
+			Console.WriteLine(thing);
 		}
 	}
 }

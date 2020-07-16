@@ -13,6 +13,7 @@
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>
+    <PackageReference Include="Microsoft.AspNetCore.SignalR.Client" Version="3.1.6" />
   </ItemGroup>
 
   <ItemGroup>
@@ -24,7 +25,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Protobuf Include="..\Autozone.PricingService\Protos\carprice.proto" GrpcServices="Client" >
+    <Protobuf Include="..\Autozone.PricingService\Protos\carprice.proto" GrpcServices="Client">
       <Link>Protos\carprice.proto</Link>
     </Protobuf>
   </ItemGroup>
