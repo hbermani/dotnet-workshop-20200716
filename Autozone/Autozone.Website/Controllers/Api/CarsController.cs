@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Autozone.Messages;
 using Autozone.Website.Data;
 using Autozone.Website.Models;
 using EasyNetQ;
@@ -58,15 +59,23 @@ namespace Autozone.Website.Controllers.Api {
 			// add the new car to the database
 			try {
 				_db.AddCar(car);
-				
-				_bus.Publish(car.Registration);
-
+				PublishNotification(car);
 				var result = new CreatedResult($"/api/cars/{car.Registration}", car);
 				return result;
 			} catch (DuplicateCarException ex) {
 				return Conflict(ex.Message);
 			}
+		}
 
+		private void PublishNotification(Car car) {
+			var message = new NewCarListingMessage {
+				Registration = car.Registration,
+				Make = car.Model.Make,
+				Model = car.Model.Name,
+				Colour = car.Colour,
+				Year = car.Year
+			};
+			_bus.Publish(message);
 		}
 
 		// GET: api/Cars/AB12XYZ

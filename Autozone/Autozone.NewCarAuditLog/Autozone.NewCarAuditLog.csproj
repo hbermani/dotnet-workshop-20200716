@@ -9,4 +9,8 @@
     <PackageReference Include="EasyNetQ" Version="5.2.0" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Autozone.Messages\Autozone.Messages.csproj" />
+  </ItemGroup>
+
 </Project>

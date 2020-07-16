@@ -1,4 +1,6 @@
 ﻿using System;
+using System.IO;
+using Autozone.Messages;
 using EasyNetQ;
 
 namespace Autozone.NewCarAuditLog {
@@ -9,8 +11,13 @@ namespace Autozone.NewCarAuditLog {
 
 		private static IBus bus = RabbitHutch.CreateBus(AMQP);
 		static void Main(string[] args) {
-			bus.Subscribe<string>("newcarauditlog", s => Console.WriteLine(s));
-			Console.WriteLine("Hello World!");
+			bus.Subscribe<NewCarListingMessage>($"newcarauditlog_{Environment.MachineName}", HandleNewCarListing);
+		}
+
+		private static void HandleNewCarListing(NewCarListingMessage message) {
+			File.AppendAllText("D:\\car_log.csv",
+				$"{DateTime.Now:O},{message.Registration},{message.Make},{message.Year}\n"
+				);
 		}
 	}
 }

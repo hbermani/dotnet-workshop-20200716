@@ -1,11 +1,13 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.26124.0
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30011.22
 MinimumVisualStudioVersion = 15.0.26124.0
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Autozone.Website", "Autozone.Website\Autozone.Website.csproj", "{4B6C587C-9D9D-4606-9BAE-DD6BCD50CD1D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Autozone.Website", "Autozone.Website\Autozone.Website.csproj", "{4B6C587C-9D9D-4606-9BAE-DD6BCD50CD1D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Autozone.NewCarAuditLog", "Autozone.NewCarAuditLog\Autozone.NewCarAuditLog.csproj", "{C80F8679-5BB8-4666-BA3F-1D10612B8EC4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Autozone.NewCarAuditLog", "Autozone.NewCarAuditLog\Autozone.NewCarAuditLog.csproj", "{C80F8679-5BB8-4666-BA3F-1D10612B8EC4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Autozone.Messages", "Autozone.Messages\Autozone.Messages.csproj", "{0E37FE75-6227-4685-B18D-65032B596356}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,9 +17,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 		Release|x64 = Release|x64
 		Release|x86 = Release|x86
-	EndGlobalSection
-	GlobalSection(SolutionProperties) = preSolution
-		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{4B6C587C-9D9D-4606-9BAE-DD6BCD50CD1D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
@@ -44,5 +43,23 @@ Global
 		{C80F8679-5BB8-4666-BA3F-1D10612B8EC4}.Release|x64.Build.0 = Release|Any CPU
 		{C80F8679-5BB8-4666-BA3F-1D10612B8EC4}.Release|x86.ActiveCfg = Release|Any CPU
 		{C80F8679-5BB8-4666-BA3F-1D10612B8EC4}.Release|x86.Build.0 = Release|Any CPU
+		{0E37FE75-6227-4685-B18D-65032B596356}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0E37FE75-6227-4685-B18D-65032B596356}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0E37FE75-6227-4685-B18D-65032B596356}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{0E37FE75-6227-4685-B18D-65032B596356}.Debug|x64.Build.0 = Debug|Any CPU
+		{0E37FE75-6227-4685-B18D-65032B596356}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{0E37FE75-6227-4685-B18D-65032B596356}.Debug|x86.Build.0 = Debug|Any CPU
+		{0E37FE75-6227-4685-B18D-65032B596356}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0E37FE75-6227-4685-B18D-65032B596356}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0E37FE75-6227-4685-B18D-65032B596356}.Release|x64.ActiveCfg = Release|Any CPU
+		{0E37FE75-6227-4685-B18D-65032B596356}.Release|x64.Build.0 = Release|Any CPU
+		{0E37FE75-6227-4685-B18D-65032B596356}.Release|x86.ActiveCfg = Release|Any CPU
+		{0E37FE75-6227-4685-B18D-65032B596356}.Release|x86.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {7416984E-B942-4D5F-862C-FA98280F6AF9}
 	EndGlobalSection
 EndGlobal
