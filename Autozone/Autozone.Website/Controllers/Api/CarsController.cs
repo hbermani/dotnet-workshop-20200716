@@ -22,6 +22,15 @@ namespace Autozone.Website.Controllers.Api {
 		public object Get() {
 
 			var cars = _db.AllCars.ToList();
+			var items = cars.Select(car => car.ToDynamic()).ToList();
+			foreach (var item in items) {
+				item._links = new {
+					model = new {
+						href = $"/api/cars/models/{item.Model.Code}"
+					}
+				};
+				item.foo = "bar";
+			}
 			return new {
 				_actions = new {
 					add_car = new {
@@ -30,11 +39,11 @@ namespace Autozone.Website.Controllers.Api {
 						href = "/api/cars",
 						method = "post",
 						schema = "https://autozone.com/data/schema/new_car.json"
-					}
+					},
 				},
 				count = cars.Count,
 				index = 0,
-				items = cars
+				items = items
 			};
 		}
 
