@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <OutputType>Exe</OutputType>
@@ -7,10 +7,26 @@
 
   <ItemGroup>
     <PackageReference Include="EasyNetQ" Version="5.2.0" />
+    <PackageReference Include="Google.ProtoBuf" Version="3.12.3" />
+    <PackageReference Include="Grpc.Net.Client" Version="2.30.0" />
+    <PackageReference Include="Grpc.Tools" Version="2.30.0">
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+      <PrivateAssets>all</PrivateAssets>
+    </PackageReference>
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\Autozone.Messages\Autozone.Messages.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Protos\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Protobuf Include="..\Autozone.PricingService\Protos\carprice.proto" GrpcServices="Client" >
+      <Link>Protos\carprice.proto</Link>
+    </Protobuf>
   </ItemGroup>
 
 </Project>
