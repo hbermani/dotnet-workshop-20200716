@@ -19,8 +19,23 @@ namespace Autozone.Website.Controllers.Api {
 
 		// GET: api/Cars
 		[HttpGet]
-		public IEnumerable<Car> Get() {
-			return _db.AllCars;
+		public object Get() {
+
+			var cars = _db.AllCars.ToList();
+			return new {
+				_actions = new {
+					add_car = new {
+						name = "add_car",
+						title = "Add a new car to the database",
+						href = "/api/cars",
+						method = "post",
+						schema = "https://autozone.com/data/schema/new_car.json"
+					}
+				},
+				count = cars.Count,
+				index = 0,
+				items = cars
+			};
 		}
 
 
@@ -30,18 +45,21 @@ namespace Autozone.Website.Controllers.Api {
 			// add the new car to the database
 			try {
 				_db.AddCar(car);
-				return Ok();
+				var result = new CreatedResult($"/api/cars/{car.Registration}", car);
+				return result;
 			} catch (DuplicateCarException ex) {
 				return Conflict(ex.Message);
 			}
 
 		}
 
-		//// GET: api/Cars/5
-		//[HttpGet("{id}", Name = "Get")]
-		//public string Get(int id) {
-		//	return "value";
-		//}
+		// GET: api/Cars/AB12XYZ
+		[HttpGet("{id}", Name = "GetCarByRegistration")]
+		public ActionResult Get(string id) {
+			var car = _db.FindCar(id);
+			if (car == null) return NotFound($"There is no car with registration {id} in our database.");
+			return Ok(car);
+		}
 
 
 		//// PUT: api/Cars/5
