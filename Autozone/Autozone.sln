@@ -9,6 +9,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Autozone.NewCarAuditLog", "
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Autozone.Messages", "Autozone.Messages\Autozone.Messages.csproj", "{0E37FE75-6227-4685-B18D-65032B596356}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Autozone.PricingService", "Autozone.PricingService\Autozone.PricingService.csproj", "{61606258-208A-4551-BB7F-68754C9AD535}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -55,6 +57,18 @@ Global
 		{0E37FE75-6227-4685-B18D-65032B596356}.Release|x64.Build.0 = Release|Any CPU
 		{0E37FE75-6227-4685-B18D-65032B596356}.Release|x86.ActiveCfg = Release|Any CPU
 		{0E37FE75-6227-4685-B18D-65032B596356}.Release|x86.Build.0 = Release|Any CPU
+		{61606258-208A-4551-BB7F-68754C9AD535}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{61606258-208A-4551-BB7F-68754C9AD535}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{61606258-208A-4551-BB7F-68754C9AD535}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{61606258-208A-4551-BB7F-68754C9AD535}.Debug|x64.Build.0 = Debug|Any CPU
+		{61606258-208A-4551-BB7F-68754C9AD535}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{61606258-208A-4551-BB7F-68754C9AD535}.Debug|x86.Build.0 = Debug|Any CPU
+		{61606258-208A-4551-BB7F-68754C9AD535}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{61606258-208A-4551-BB7F-68754C9AD535}.Release|Any CPU.Build.0 = Release|Any CPU
+		{61606258-208A-4551-BB7F-68754C9AD535}.Release|x64.ActiveCfg = Release|Any CPU
+		{61606258-208A-4551-BB7F-68754C9AD535}.Release|x64.Build.0 = Release|Any CPU
+		{61606258-208A-4551-BB7F-68754C9AD535}.Release|x86.ActiveCfg = Release|Any CPU
+		{61606258-208A-4551-BB7F-68754C9AD535}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

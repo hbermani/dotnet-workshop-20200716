@@ -1,0 +1,25 @@
+syntax = "proto3";
+
+option csharp_namespace = "Autozone.PricingService";
+
+package greet;
+
+// The greeting service definition.
+service Pricer {
+  // Sends a greeting
+  rpc CalculatePrice (CarPriceRequest) returns (CarPriceResponse);
+}
+
+// The request message containing the user's name.
+message CarPriceRequest {
+  string make = 1;
+  string model = 2;
+  int32 year = 3;
+  string colour = 4;
+}
+
+// The response message containing the greetings.
+message CarPriceResponse {
+    int32 price = 1;
+    string currency = 2;
+}
