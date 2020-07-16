@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Autozone.Website.Data;
 using Autozone.Website.Models;
+using EasyNetQ;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -11,10 +12,13 @@ namespace Autozone.Website.Controllers.Api {
 	[Route("api/[controller]")]
 	[ApiController]
 	public class CarsController : ControllerBase {
+		
 		private readonly CarDatabase _db;
+		private readonly IBus _bus;
 
-		public CarsController(CarDatabase db) {
+		public CarsController(CarDatabase db, IBus bus) {
 			_db = db;
+			_bus = bus;
 		}
 
 		// GET: api/Cars
@@ -54,6 +58,9 @@ namespace Autozone.Website.Controllers.Api {
 			// add the new car to the database
 			try {
 				_db.AddCar(car);
+				
+				_bus.Publish(car.Registration);
+
 				var result = new CreatedResult($"/api/cars/{car.Registration}", car);
 				return result;
 			} catch (DuplicateCarException ex) {
